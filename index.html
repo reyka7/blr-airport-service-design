@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SilverFlow BLR | Age-Friendly Airport Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F3EA;
+  --paper:#FFFCF5;
+  --ink:#171717;
+  --muted:#68635B;
+  --soft:#EAE3D4;
+  --line:#D9D1C1;
+  --sage:#C9D8C5;
+  --lemon:#F2F2A6;
+  --blue:#DDE5F2;
+  --peach:#F1D4BE;
+  --gold:#7A1E2C;
+  --black:#0F0F0F;
+  --radius:34px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.nav{
+  position:fixed;
+  top:26px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:80;
+  display:flex;
+  gap:4px;
+  padding:7px;
+  border:1px solid rgba(23,23,23,.10);
+  background:rgba(255,252,245,.72);
+  backdrop-filter:blur(18px);
+  border-radius:999px;
+  box-shadow:0 12px 40px rgba(23,23,23,.05);
+}
+.nav a{
+  padding:9px 13px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  color:rgba(23,23,23,.58);
+}
+.nav a:hover,.nav a.active{background:var(--ink);color:#fff}
+.progress{
+  position:fixed;top:0;left:0;height:3px;width:0;background:var(--black);z-index:100;
+}
+section{
+  position:relative;
+  padding:96px 7vw;
+}
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr .95fr;
+  align-items:center;
+  gap:64px;
+  padding-top:128px;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.kicker:after{
+  content:"↘";
+  font-size:14px;
+  color:var(--ink);
+}
+h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(66px,9vw,126px);
+  line-height:1.02;
+  letter-spacing:-.06em;
+  font-weight:700;
+}
+h1 em{font-style:italic;color:var(--gold)}
+h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(40px,5vw,78px);
+  line-height:1;
+  letter-spacing:-.05em;
+  font-weight:700;
+}
+h3{
+  font-size:24px;
+  line-height:1.15;
+  letter-spacing:-.04em;
+}
+p{
+  font-size:18px;
+  line-height:1.62;
+  color:var(--muted);
+}
+.lead{
+  font-size:clamp(20px,2vw,28px);
+  line-height:1.45;
+  max-width:700px;
+  margin-top:28px;
+}
+.meta{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+.pill{
+  border:1px solid var(--ink);
+  border-radius:999px;
+  padding:10px 15px;
+  font-size:13px;
+  font-weight:700;
+  background:rgba(255,255,255,.32);
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:34px;
+  box-shadow:0 24px 70px rgba(23,23,23,.045);
+}
+.grid{display:grid;gap:24px}
+.two{grid-template-columns:1fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
+.wrap{max-width:1220px;margin:0 auto}
+.media{
+  position:relative;
+  min-height:430px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,var(--blue),var(--paper));
+}
+.media.transparent{
+  background:transparent;
+  border:none;
+  overflow:visible;
+  box-shadow:none;
+}
+.media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+  display:none;
+}
+.media.transparent img{object-fit:contain}
+.media.has-img img{display:block}
+.media.has-img .ph{display:none}
+.ph{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:34px;
+  text-align:center;
+  color:rgba(23,23,23,.54);
+  background:
+    radial-gradient(circle at 20% 20%,rgba(242,242,166,.65),transparent 28%),
+    radial-gradient(circle at 90% 80%,rgba(201,216,197,.75),transparent 31%),
+    repeating-linear-gradient(-45deg,rgba(23,23,23,.025),rgba(23,23,23,.025) 12px,rgba(255,255,255,.32) 12px,rgba(255,255,255,.32) 24px);
+}
+.ph b{
+  display:block;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-bottom:9px;
+}
+.ph small{font-size:14px;line-height:1.5;max-width:310px}
+.caption{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:20px;
+  z-index:3;
+  background:rgba(255,252,245,.82);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(23,23,23,.08);
+  border-radius:20px;
+  padding:16px 18px;
+  font-size:14px;
+  color:var(--ink);
+}
+.media.transparent .caption{display:none}
+.section-head{
+  display:grid;
+  grid-template-columns:.75fr 1fr;
+  gap:44px;
+  align-items:end;
+  margin-bottom:44px;
+}
+.problem-block{
+  background:var(--paper);
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  padding:48px 42px;
+}
+.problem-block .big{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(34px,4vw,60px);
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+.problem-block em{color:var(--gold);font-style:italic}
+.process-card{
+  border-left:1px solid var(--line);
+  padding:16px 26px 20px;
+  min-height:210px;
+}
+.process-card .icon{
+  width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--blue);
+  margin-bottom:38px;
+  font-size:24px;
+}
+.process-card:nth-child(2) .icon{background:var(--sage)}
+.process-card:nth-child(3) .icon{background:var(--lemon)}
+.process-card b{
+  font-size:32px;
+  letter-spacing:-.06em;
+  font-weight:700;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+.chips span{
+  border:1px solid var(--ink);
+  border-radius:999px;
+  padding:9px 13px;
+  font-size:12px;
+  font-weight:600;
+}
+.signal-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:22px auto 14px;
+}
+
+.signal-icon img{
+  width:76px;
+  height:76px;
+  object-fit:contain;
+}
+.signal{
+  background:var(--paper);
+  border-radius:30px;
+  border:1px solid var(--line);
+  padding:22px;
+}
+.signal .shot{
+  min-height:190px;
+  border-radius:22px;
+  background:var(--blue);
+  border:1px dashed rgba(23,23,23,.25);
+  position:relative;
+  overflow:hidden;
+}
+.signal .shot img{
+  width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:none;
+}
+.signal .shot.has-img img{display:block}
+.signal .shot.has-img .ph{display:none}
+.signal h3{margin-top:18px}
+.signal p{font-size:16px;margin-top:8px}
+.user-card{
+  display:grid;
+  grid-template-columns:.82fr 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+.quote{
+  background:var(--lemon);
+  border-radius:999px;
+  padding:18px 26px;
+  font-size:19px;
+  line-height:1.42;
+  font-weight:600;
+  display:flex;
+  gap:16px;
+  align-items:center;
+}
+.quote:before{
+  content:"“";
+  width:50px;height:50px;border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-family:"Playfair Display",serif;
+  font-size:44px;
+  flex-shrink:0;
+}
+.persona-info{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:34px;
+  padding:34px;
+  margin-top:18px;
+}
+.persona-info .name{
+  display:flex;gap:14px;align-items:center;margin-bottom:24px;
+}
+.avatar{
+  width:54px;height:54px;border-radius:50%;
+  background:var(--sage);
+  display:grid;place-items:center;font-weight:800;
+}
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:24px 0;
+}
+.fact{
+  background:rgba(23,23,23,.035);
+  border-radius:18px;
+  padding:15px;
+}
+.fact small{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  font-weight:800;
+  margin-bottom:4px;
+}
+.fact b{font-size:18px}
+.pain-list{
+  display:grid;
+  gap:12px;
+}
+.pain{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:16px;
+  line-height:1.5;
+}
+.pain:before{
+  content:"→";
+  font-size:20px;
+  line-height:1;
+  color:var(--gold);
+}
+.stats{
+  align-items:stretch;
+}
+.stat{
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.stat .num{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(48px,6vw,92px);
+  line-height:.9;
+  letter-spacing:-.06em;
+  color:var(--ink);
+}
+.stat p{font-size:16px}
+.journey-image-wrap{
+  width:100%;
+  max-width:1120px;
+  margin:80px auto 0;
+}
+
+.journey-image-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.journey{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  border:1px solid var(--ink);
+  border-radius:30px;
+  overflow:hidden;
+  background:var(--paper);
+}
+.stage{
+  padding:26px;
+  border-right:1px solid var(--ink);
+  min-height:310px;
+}
+.stage:last-child{border-right:none}
+.stage .no{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  color:var(--gold);
+}
+.stage h3{margin:32px 0 16px}
+.stage p{font-size:15px}
+.stage .emotion{
+  margin-top:24px;
+  display:inline-block;
+  background:var(--blue);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:800;
+}
+.stage:nth-child(2) .emotion{background:var(--lemon)}
+.stage:nth-child(3) .emotion{background:var(--peach)}
+.stage:nth-child(4) .emotion{background:var(--sage)}
+.stage:nth-child(5) .emotion{background:#E7DAF0}
+.concept-icon{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.concept-icon img{
+  width:62px;
+  height:62px;
+  object-fit:contain;
+}
+.concept-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:34px;
+  padding:30px;
+  min-height:300px;
+}
+.concept-card .num{
+  font-size:12px;
+  color:var(--gold);
+  font-weight:800;
+  letter-spacing:.18em;
+  margin-bottom:24px;
+}
+.concept-card p{font-size:16px;margin-top:12px}
+.value-map{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-top:34px;
+}
+.value-step{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  min-height:170px;
+}
+.value-step span{font-size:30px}
+.value-step h3{font-size:19px;margin:15px 0 8px}
+.value-step p{font-size:14px}
+.note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:18px;
+}
+.footer{
+  text-align:center;
+  padding:120px 7vw;
+}
+.footer h2{max-width:900px;margin:0 auto}
+.footer p{max-width:720px;margin:24px auto 0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+.delay1{transition-delay:.1s}.delay2{transition-delay:.2s}.delay3{transition-delay:.3s}
+
+
+.ideas-intro{
+  display:grid;
+  grid-template-columns:.9fr 1fr;
+  gap:24px;
+  align-items:start;
+}
+.ideas-visual{
+  min-height:250px;
+  margin-top:0;
+}
+.ideas-visual .ph{
+  border-radius:34px;
+  border:1px dashed rgba(23,23,23,.22);
+}
+.ideas-intro p{
+  align-self:start;
+  margin-top:0;
+}
+
+
+
+.ideas-intro-wide p{
+  margin-top:0;
+}
+.opportunity-statement{
+  text-align:center;
+}
+.opportunity-statement .kicker{
+  justify-content:center;
+}
+.opportunity-statement .kicker:after{
+  display:none;
+}
+.opportunity-statement h2{
+  max-width:980px;
+  margin:0 auto 54px;
+  font-style:italic;
+  color:#18233A;
+}
+.gapvis{
+  width:100%;
+  max-width:980px;
+  display:flex;
+  align-items:stretch;
+  margin:0 auto 34px;
+}
+.gbox{
+  flex:1;
+  background:var(--paper);
+  border:1px solid rgba(122,30,44,.22);
+  border-radius:24px;
+  padding:30px 22px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  box-shadow:0 18px 50px rgba(23,23,23,.04);
+}
+.gbox.mid{
+  background:rgba(122,30,44,.055);
+  border-color:rgba(122,30,44,.38);
+  flex:1.15;
+}
+.gbl{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.gbl.g{color:var(--gold);}
+.gbn{
+  font-size:21px;
+  font-weight:800;
+  color:#18233A;
+  letter-spacing:-.03em;
+}
+.gbn.g{color:var(--gold);}
+.gsub{
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.55;
+  margin-top:4px;
+}
+.gsub.g{
+  color:rgba(122,30,44,.85);
+  font-style:italic;
+}
+.garr{
+  display:flex;
+  align-items:center;
+  color:var(--gold);
+  font-size:28px;
+  font-weight:800;
+  padding:0 14px;
+}
+.opportunity-statement .ins{
+  font-size:20px;
+  font-weight:400;
+  color:var(--muted);
+  max-width:820px;
+  margin:0 auto;
+  line-height:1.7;
+}
+
+
+.contact-section{
+  padding-top:20px;
+  padding-bottom:90px;
+}
+.contact-wrap{
+  text-align:center;
+}
+.contact-line{
+  font-size:18px;
+  color:var(--muted);
+  margin-bottom:28px;
+}
+.contact-icons{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  align-items:center;
+}
+.contact-icons a{
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--paper);
+  transition:transform .2s ease, border-color .2s ease;
+}
+.contact-icons a:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+}
+.contact-icons img{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  display:block;
+}
+
+/* Minimal standalone opportunity statement */
+section .opportunity-statement h2{
+  margin-bottom:0;
+}
+
+@media(max-width:980px){
+  .nav{display:none}
+  section{padding:72px 24px}
+  .hero,.two,.three,.four,.section-head,.ideas-intro,.user-card,.journey,.value-map{grid-template-columns:1fr}
+  .journey{border-radius:24px}
+  .stage{border-right:none;border-bottom:1px solid var(--ink)}
+  .stage:last-child{border-bottom:none}
+  .media{min-height:300px}
+  .gapvis{flex-direction:column;gap:12px}
+  .garr{display:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav class="nav" id="nav">
+  <a href="#overview">Overview</a>
+  <a href="#signals">Problem</a>
+  <a href="#user">User Persona</a>
+  <a href="#data">Need</a>
+  <a href="#journey">Journey</a>
+  <a href="#ideas">Ideas</a>
+  <a href="#value">Value</a>
+</nav>
+
+<section class="hero" id="overview">
+  <div class="reveal">
+    <div class="kicker">Service Design</div>
+    <h1>Designing for Elderly Travellers <em>BIAL</em></h1>
+    <p class="lead">An independent design exploration on enhancing the passenger experience for elderly travellers at Bengaluru International Airport.</p>
+    <div class="meta">
+      <span class="pill">Passenger Experience</span>
+      <span class="pill">Accessibility</span>
+      <span class="pill">Age-friendly travel</span>
+    </div>
+  </div>
+  <div class="media reveal delay1">
+    <img src="blr-aerial.jpg" alt="Bengaluru airport aerial view">
+    <div class="ph"><div><b>Image slot</b><small>Place your hero image in the same folder as this HTML and name it <strong>blr-aerial.jpg</strong>.</small></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker reveal">Design Process</div>
+    <div class="grid three">
+      <div class="process-card reveal">
+        <div class="icon">⌕</div>
+        <b>Research</b>
+        <div class="chips"><span>Desk research</span><span>Social listening</span><span>Airport scan</span></div>
+      </div>
+      <div class="process-card reveal delay1">
+        <div class="icon">✎</div>
+        <b>Synthesis</b>
+        <div class="chips"><span>User persona</span><span>Journey friction</span><span>Opportunity gap</span></div>
+      </div>
+      <div class="process-card reveal delay2">
+        <div class="icon">☆</div>
+        <b>Direction</b>
+        <div class="chips"><span>Service concepts</span><span>Experience layer</span><span>Business value</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="signals">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Public Signals</div>
+        <h2 class="reveal delay1">The Problem.</h2>
+      </div>
+      <p class="reveal delay2">This case study begins from public discussions around priority support, elderly traveller concerns, pickup friction, and clearer airport movement.<br>Insights were drawn from LinkedIn, keeping all identities anonymous.
+</p>
+    </div>
+
+   <div class="grid three">
+  <div class="signal reveal">
+    <div class="shot">
+      <img src="comment-senior-security-lane.jpg" alt="Public comment asking for senior security lane">
+      <div class="ph"><div><b>Screenshot slot</b><small>Use file name <strong>comment-senior-security-lane.jpg</strong></small></div></div>
+    </div>
+
+    <div class="signal-icon">
+      <img src="signal-icon-1.png" alt="">
+    </div>
+
+    <p>A direct public request for a visible senior-friendly pathway on a trending BIAL post.</p>
+  </div>
+
+  <div class="signal reveal delay1">
+    <div class="shot">
+      <img src="comment-pickup-wayfinding.jpg" alt="Public passenger comment about pickup wayfinding">
+      <div class="ph"><div><b>Screenshot slot</b><small>Use file name <strong>comment-pickup-wayfinding.jpg</strong></small></div></div>
+    </div>
+
+    <div class="signal-icon">
+      <img src="signal-icon-2.png" alt="">
+    </div>
+
+    <p>Arrival, pickup, and last-mile movement continue to be high-friction moments for elderly travellers.</p>
+  </div>
+
+  <div class="signal reveal delay2">
+    <div class="shot">
+      <img src="comment-accessibility-query.jpg" alt="Public passenger accessibility query">
+      <div class="ph"><div><b>Screenshot slot</b><small>Use file name <strong>comment-accessibility-query.jpg</strong></small></div></div>
+    </div>
+
+    <div class="signal-icon">
+      <img src="signal-icon-3.png" alt="">
+    </div>
+
+    <p>Passengers are calling for better-designed experiences that feel easier, clearer, and more dignified.</p>
+  </div>
+</div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Design Gap</div>
+        <h2 class="reveal delay1">Where the gap sits.</h2>
+      </div>
+
+      <div class="reveal delay2">
+        <p>Bangalore Airport has a strong accessibility foundation through Passenger with Reduced Mobility (PRM) support, wheelchair assistance, Hidden Disabilities support, and inclusive passenger services.</p>
+
+        <p style="margin-top:18px;">
+          However, many elderly travellers don't identify as PRM. They are mobile and independent, but still experience airport anxiety, speed pressure, standing fatigue, digital confusion, and the fear of slowing others down.
+        </p>
+      </div>
+    </div>
+
+    <div class="gapvis reveal delay2">
+
+      <div class="gbox">
+        <span class="gbl">Standard</span>
+        <span class="gbn">General Passenger Journey</span>
+        <span class="gsub">
+          Self-service · Fast-paced<br>
+          No extra support
+        </span>
+      </div>
+
+      <span class="garr">›</span>
+
+      <div class="gbox mid">
+        <span class="gbl g">The Gap</span>
+        <span class="gbn g">Age-Friendly Experience Layer</span>
+        <span class="gsub g">
+          Slower · Lower stress<br>
+          More dignified movement
+        </span>
+      </div>
+
+      <span class="garr">›</span>
+
+      <div class="gbox">
+        <span class="gbl">Assisted</span>
+        <span class="gbn">PRM / Wheelchair</span>
+        <span class="gsub">
+          Declared disability<br>
+          Full escort · Medical need
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="user">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">User Persona</div>
+        <h2 class="reveal delay1">Independent, but quietly overwhelmed.</h2>
+      </div>
+      <p class="reveal delay2"></p>
+    </div>
+
+    <div class="user-card">
+      <div class="media reveal">
+        <img src="persona-elderly-traveller.png" alt="Elderly traveller persona">
+        <div class="ph"><div><b>PNG / image slot</b><small>Use file name <strong>persona-elderly-traveller.png</strong>. A transparent PNG illustration or elderly airport traveller photo works here.</small></div></div>
+      </div>
+
+      <div class="reveal delay1">
+        <div class="quote">I don’t need assistance. I just need someone to make the airport feel less rushed.</div>
+        <div class="persona-info">
+          <div class="name">
+            <div class="avatar">R</div>
+            <div>
+              <h3>Deepa, 68</h3>
+              <p style="font-size:15px;">Retired school principal · Flying alone to Kochi</p>
+            </div>
+          </div>
+
+          <div class="facts">
+            <div class="fact"><small>Travel mode</small><b>Solo</b></div>
+            <div class="fact"><small>Mobility</small><b>Independent</b></div>
+            <div class="fact"><small>Support need</small><b>Calm guidance</b></div>
+          </div>
+
+          <div class="pain-list">
+            <div class="pain">Feels rushed while preparing trays at security.</div>
+            <div class="pain">Avoids asking for help because she does not want to be seen as dependent.</div>
+            <div class="pain">Worries about gate changes, long walks, and finding pickup after arrival.</div>
+            <div class="pain">Arrives too early to compensate for uncertainty and anxiety.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Why This Matters Now</div>
+        <h2 class="reveal delay1">Why elderly passengers matter?</h2>
+      </div>
+      <p class="reveal delay2">India is ageing fast. Bangalore is growing fast. The timing is now.</p>
+    </div>
+
+    <div class="grid four stats">
+      <div class="card stat reveal">
+        <div class="num">43.8M</div>
+        <p>BLR passengers in 2025.</p>
+      </div>
+      <div class="card stat reveal delay1" style="background:var(--lemon);">
+        <div class="num">173M+</div>
+        <p>Indians aged 60+ projected by 2026.</p>
+      </div>
+      <div class="card stat reveal delay2" style="background:var(--sage);">
+        <div class="num">230M</div>
+        <p>Projected 60+ population by 2036.</p>
+      </div>
+      <div class="card stat reveal delay3" style="background:var(--blue);">
+        <div class="num">2.6–5.8M</div>
+        <p>Estimated senior-linked journeys at BLR annually.</p>
+      </div>
+    </div>
+    <p class="note reveal">*Senior traveller estimate is derived from demographic participation assumptions applied to BLR's 2025 passenger count. Southern states including Karnataka have higher elderly population shares.</p>
+<p class="note reveal" style="margin-top:8px;">
+  <strong>Sources:</strong> BIAL 2025 Traffic Statistics; Ministry of Health & Family Welfare, Government of India, Population Projections.
+</p>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Journey Friction</div>
+        <h2 class="reveal delay1">Transition points are always the hardest.</h2>
+      </div>
+      <p class="reveal delay2">For elderly travellers, airport friction often appears at transition points: the moments where they need to decode what happens next.</p>
+    </div>
+
+<div class="journey-image-wrap reveal delay1">
+  <img src="journey-friction-map.png" alt="Journey friction map for elderly travellers">
+</div>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="wrap opportunity-statement">
+<div class="kicker reveal" style="justify-content:center;">Opportunity Statement</div>
+    <h2 class="reveal delay1">
+      How might Bangalore become India’s benchmark for age-friendly airport journeys?
+    </h2>
+  </div>
+</section>
+
+<section id="ideas">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Opportunity Direction</div>
+        <h2 class="reveal delay1">Enhancing elderly passenger's travel experience.</h2>
+      </div>
+      <div class="ideas-intro-wide reveal delay2">
+        <p>The proposed ideas aim to add a visible, low-stigma, age-friendly layer between the standard passenger journey and full PRM assistance.</p>
+      </div>
+    </div>
+
+    <div class="grid three">
+      <div class="concept-card reveal">
+        <div class="num">01</div>
+<div class="concept-icon">
+  <img src="idea-icon-1.png" alt="">
+</div>
+        <h3>Senior Assistance Lane</h3>
+        <p>A clearly marked low-stress security pathway for elderly travellers who are mobile, but need more time and calmer guidance.</p>
+      </div>
+      <div class="concept-card reveal delay1">
+        <div class="num">02</div>
+<div class="concept-icon">
+  <img src="idea-icon-2.png" alt="">
+</div>
+        <h3>Guided Journey</h3>
+        <p>Opt-in guidance from entry to check-in, security to gate, or arrival to pickup. Renowned airports across the world like Changi and Heathrow have this in place.</p>
+      </div>
+      <div class="concept-card reveal delay2">
+        <div class="num">03</div>
+<div class="concept-icon">
+  <img src="idea-icon-3.png" alt="">
+</div>
+        <h3>Companion Access Pass</h3>
+        <p>A controlled, policy-led way for one family member to accompany an elderly passenger through key anxiety points where feasible.</p>
+      </div>
+      <div class="concept-card reveal">
+        <div class="num">04</div>
+<div class="concept-icon">
+  <img src="idea-icon-4.png" alt="">
+</div>
+        <h3>Pause Points</h3>
+        <p>Small rest zones between major airport transitions with seating, water, large-text wayfinding, and staff visibility.</p>
+      </div>
+      <div class="concept-card reveal delay1">
+        <div class="num">05</div>
+<div class="concept-icon">
+  <img src="idea-icon-5.png" alt="">
+</div>
+        <h3>Low-Stress Screening Experiences</h3>
+        <p>Calmer pacing, clearer instructions, and staff interaction designed to reduce hurry, confusion, and embarrassment during security screening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="value">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker reveal">Business + Brand Value</div>
+        <h2 class="reveal delay1">Better experiences build lasting brand value.</h2>
+      </div>
+      <p class="reveal delay2">Age-friendly passenger experience can become a long-term differentiator for airports shaping the future of travel. It improves passenger trust, reduces friction, and positions Bangalore as India’s benchmark for age-friendly airport experience.</p>
+    </div>
+
+    <div class="value-map reveal delay1">
+      <div class="value-step"><span>😌</span><h3>Less anxiety</h3><p>Calmer passenger movement through high-stress transitions.</p></div>
+      <div class="value-step"><span>🚶</span><h3>Smoother flow</h3><p>Reduced confusion at security, transfers, and arrival pickup.</p></div>
+      <div class="value-step"><span>👨‍👩‍👧</span><h3>Family trust</h3><p>Stronger confidence among families sending elders alone.</p></div>
+      <div class="value-step"><span>☕</span><h3>More engagement</h3><p>Comfortable passengers are more likely to use retail, F&B, and services.</p></div>
+      <div class="value-step"><span>🌏</span><h3>Global recognition</h3><p>A visible leadership position in inclusive airport design.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="wrap">
+    <div class="kicker reveal" style="justify-content:center;">Closing Thought</div>
+    <h2 class="reveal delay1">Bangalore has a strong accessibility foundation. The next opportunity is: <em style="color:var(--gold);font-style:italic;">age-friendly passenger journeys.</em></h2>
+    <p class="reveal delay2">This is an independent concept study built from public information, passenger signals, and design opportunity mapping, intended as a conversation starter for passenger experience and inclusive design.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="wrap contact-wrap">
+    <p class="contact-line">If you liked this study, I’d love to connect and continue the conversation.</p>
+
+    <div class="contact-icons">
+      <a href="https://linkedin.com/in/rekha-mathew7" target="_blank" aria-label="LinkedIn">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+      </a>
+
+      <a href="https://behance.net/rekhamathew2" target="_blank" aria-label="Portfolio">
+        <img src="behance-icon.png" alt="Portfolio">
+      </a>
+
+      <a href="mailto:rekhamathew0707@gmail.com" aria-label="Email">
+        <img src="mail-icon.png" alt="Email">
+      </a>
+    </div>
+  </div>
+
+<div style="margin-top:32px;">
+  <p style="
+    font-size:13px;
+    font-weight:600;
+    color:rgba(23,23,23,.55);
+    margin-bottom:5px;
+  ">
+    Rekha Mathew
+  </p>
+
+  <p style="
+    font-size:12px;
+    color:rgba(23,23,23,.42);
+    letter-spacing:.04em;
+  ">
+    Product and Service Designer
+  </p>
+</div>
+</section>
+
+<script>
+const progress=document.getElementById('progress');
+const navLinks=[...document.querySelectorAll('.nav a')];
+const sections=[...document.querySelectorAll('section[id]')];
+
+function updateProgress(){
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(window.scrollY/h*100)+'%';
+  let current=sections[0]?.id;
+  sections.forEach(sec=>{
+    const r=sec.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.45 && r.bottom>=window.innerHeight*.45){current=sec.id;}
+  });
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+}
+window.addEventListener('scroll',updateProgress);
+updateProgress();
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.media img, .shot img').forEach(img=>{
+  const parent=img.closest('.media,.shot');
+  function loaded(){
+    parent.classList.add('has-img');
+  }
+  function failed(){
+    parent.classList.remove('has-img');
+    img.style.display='none';
+  }
+  img.addEventListener('load',loaded);
+  img.addEventListener('error',failed);
+  if(img.complete && img.naturalWidth>0) loaded();
+});
+</script>
+</body>
+</html>
