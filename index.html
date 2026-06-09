@@ -473,9 +473,14 @@ p{
 }
 
 /* SOLUTIONS SECTION */
-.solutions-bento{
+.solutions-list{
   display:grid;
-  grid-template-columns:repeat(12,1fr);
+  gap:18px;
+}
+
+.solution-row{
+  display:grid;
+  grid-template-columns:68% 32%;
   gap:18px;
   align-items:stretch;
 }
@@ -485,14 +490,11 @@ p{
   border:1px solid var(--line);
   border-radius:34px;
   padding:30px;
-  min-height:260px;
+  min-height:250px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:center;
 }
-
-.solution-card.large{grid-column:span 6}
-.solution-card.medium{grid-column:span 4}
 
 .solution-card .num{
   font-size:12px;
@@ -501,46 +503,55 @@ p{
   letter-spacing:.18em;
   margin-bottom:18px;
 }
-.solution-card h3{margin-bottom:14px}
+
+.solution-card h3{
+  margin-bottom:14px;
+}
+
 .solution-card p{
   font-size:16px;
   line-height:1.62;
 }
 
-.solution-image{
-  position:relative;
-  min-height:340px;
+.solution-visual{
+  min-height:250px;
   border-radius:34px;
   overflow:hidden;
   border:1px solid var(--line);
   background:var(--soft);
 }
-.solution-image img{
+
+.solution-visual img{
   width:100%;
   height:100%;
   object-fit:cover;
-  position:absolute;
-  inset:0;
   display:block;
 }
-.solution-image.security{grid-column:span 4}
-.solution-image.pause{grid-column:span 6}
 
-.solution-phone{
-  grid-column:span 4;
-  min-height:520px;
+.solution-visual.phone{
+  border:none;
+  background:transparent;
+  overflow:visible;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:0 28px;
 }
-.solution-phone img{
-  height:520px;
+
+.solution-visual.phone img{
+  height:360px;
   width:auto;
-  max-width:100%;
-  display:block;
   object-fit:contain;
   filter:drop-shadow(0 22px 34px rgba(23,23,23,.18));
+}
+
+@media(max-width:760px){
+  .solution-row{
+    grid-template-columns:1fr;
+  }
+
+  .solution-visual.phone img{
+    height:340px;
+  }
 }
 
 .ai-note{
@@ -855,7 +866,7 @@ p{
       </div>
     </div>
 
-    <p class="ai-note">*Image is AI-generated.</p>
+    <p class="ai-note">*AI-generated image</p>
   </div>
 </section>
 
@@ -928,61 +939,70 @@ p{
       </div>
     </div>
 
-    <div class="solutions-bento">
-      <div class="solution-card medium reveal">
-        <div>
-          <div class="num">01</div>
-          <h3>Senior Lane</h3>
-          <p>A dedicated opt-in route through security and check-in for passengers 65 and above who are mobile but need more time, clearer guidance, and a lower-pressure environment.</p>
-        </div>
-      </div>
+   <div class="solutions-list">
 
-      <div class="solution-image security reveal delay1">
-        <img src="solution-security-screening.jpg" alt="Elderly passenger using advanced airport security screening">
-      </div>
-
-      <div class="solution-card medium reveal delay2">
-        <div>
-          <div class="num">02</div>
-          <h3>Reimagined Security Screening</h3>
-          <p>Security screening is the highest-friction point in the journey. At several international airports, secondary physical screening is only triggered when the body scanner alerts, removing default pat-down checks. Millimeter-wave scanners can further streamline screening, helping passengers move faster with less physical and cognitive effort while maintaining security standards.</p>
-        </div>
-      </div>
-
-      <div class="solution-card medium reveal">
-        <div>
-          <div class="num">03</div>
-          <h3>BLR Pulse: Elderly Journey Mode</h3>
-          <p>A simplified journey view within the existing BLR Pulse app that shows elderly passengers their next essential step at any point in the airport, along with pre-booked security slots, nearest rest stops, and real-time gate updates.</p>
-        </div>
-      </div>
-
-      <div class="solution-phone reveal delay1">
-        <img src="solution-pulse-journey-mode.png" alt="BLR Pulse elderly journey mode UI">
-      </div>
-
-      <div class="solution-card medium reveal delay2">
-        <div>
-          <div class="num">04</div>
-          <h3>Companion Access Pass</h3>
-          <p>A controlled, policy-led framework that allows one family member to accompany an elderly passenger through key transition points where operationally feasible.</p>
-        </div>
-      </div>
-
-      <div class="solution-card large reveal">
-        <div>
-          <div class="num">05</div>
-          <h3>Pause Points</h3>
-          <p>Small, purposefully placed rest zones at major transition points across the terminal, specifically between check-in and security and between security and the gate. Each pause point includes seating, water access, large-text wayfinding panels, and visible staff presence.</p>
-        </div>
-      </div>
-
-      <div class="solution-image pause reveal delay1">
-        <img src="solution-pause-points.jpg" alt="Airport pause point for elderly passengers">
-      </div>
+  <div class="solution-row">
+    <div class="solution-card reveal">
+      <div class="num">01</div>
+      <h3>Senior Lane</h3>
+      <p>A dedicated opt-in route through security and check-in for passengers 65 and above who are mobile but need more time, clearer guidance, and a lower-pressure environment.</p>
     </div>
 
-    <p class="ai-note">*Images are AI-generated.</p>
+    <div class="solution-visual reveal delay1">
+      <img src="solution-senior-lane.jpg" alt="Senior lane at airport">
+    </div>
+  </div>
+
+  <div class="solution-row">
+    <div class="solution-card reveal">
+      <div class="num">02</div>
+      <h3>Reimagined Security Screening</h3>
+      <p>Security screening is the highest-friction point in the elderly passenger journey. At several international airports, secondary physical screening is only triggered when the body scanner alerts, reducing default pat-downs. Millimeter-wave scanners can further streamline screening, helping passengers move faster with less physical and cognitive effort while maintaining security standards.</p>
+    </div>
+
+    <div class="solution-visual reveal delay1">
+      <img src="solution-security-screening.jpg" alt="Advanced security screening for elderly passenger">
+    </div>
+  </div>
+
+  <div class="solution-row">
+    <div class="solution-card reveal">
+      <div class="num">03</div>
+      <h3>BLR Pulse: Elderly Journey Mode</h3>
+      <p>A simplified journey view within the existing BLR Pulse app that shows elderly passengers their next essential step at any point in the airport, along with pre-booked security slots, nearest rest stops, and real-time gate updates.</p>
+    </div>
+
+    <div class="solution-visual phone reveal delay1">
+      <img src="solution-pulse-journey-mode.png" alt="BLR Pulse elderly journey mode UI">
+    </div>
+  </div>
+
+  <div class="solution-row">
+    <div class="solution-card reveal">
+      <div class="num">04</div>
+      <h3>Companion Access Pass</h3>
+      <p>A controlled, policy-led framework that allows one family member to accompany an elderly passenger through key transition points where operationally feasible.</p>
+    </div>
+
+    <div class="solution-visual phone reveal delay1">
+      <img src="solution-companion-pass.png" alt="Companion access pass app UI">
+    </div>
+  </div>
+
+  <div class="solution-row">
+    <div class="solution-card reveal">
+      <div class="num">05</div>
+      <h3>Pause Points</h3>
+      <p>Small, purposefully placed rest zones at major transition points across the terminal, specifically between check-in and security and between security and the gate. Each pause point includes seating, water access, large-text wayfinding panels, and visible staff presence.</p>
+    </div>
+
+    <div class="solution-visual reveal delay1">
+      <img src="solution-pause-points.jpg" alt="Airport pause point for elderly passengers">
+    </div>
+  </div>
+
+</div>
+    <p class="ai-note">*AI-generated images</p>
   </div>
 </section>
 
